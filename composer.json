@@ -1,0 +1,31 @@
+{
+    "name": "happgo/db",
+    "type": "library",
+    "description": "this is db",
+    "minimum-stability": "dev",
+    "license": "Apache-2.0",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "zhangbofa",
+            "email": "626223818@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">7.1",
+        "happgo/lib": "dev-master"
+    },
+    "require-dev": {
+        "eaglewu/swoole-ide-helper": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Happgo\\Db\\": "src/",
+            "Happgo\\Db\\Test\\": "test/"
+
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    }
+}
