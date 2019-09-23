@@ -36,6 +36,7 @@ class Model
 
     public function getTable()
     {
+        // TODO 获取className, 通过bean获取注解的数据
         $table = strtolower($this->getPrefix(). basename(str_replace('\\', '/', $this->getClassName())));
         return $table;
     }

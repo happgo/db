@@ -33,7 +33,7 @@ class DbPool
 
 
     private $config = [
-        'max_num' => 100,
+        'max_num' => 5,
         'mysql' => [
             'host'          => '127.0.0.1',
             'port'          => 3306,
@@ -56,22 +56,29 @@ class DbPool
     {
         if (self::$instance == null) {
             $dbPool = new DbPool();
-            $dbPool->init();
             self::$instance = $dbPool;
         }
         return self::$instance;
     }
 
-    private function init()
+    public function init()
     {
+        var_dump('mysql init');
         $this->pool = new Chan($this->config["max_num"]);//用channel来作为连接池容器
         for ($i = 0; $i < $this->config["max_num"]; $i++) {
-            $mysql = new MySQL();
-            $res = $mysql->connect($this->config['mysql']);
-            if ($res == false) {
-                throw new \RuntimeException("failed to connect mysql server");
-            }
-            $this->release($mysql);
+            go(function (){
+
+                $mysql = new MySQL();
+                $res = $mysql->connect($this->config['mysql']);
+
+                var_dump('connect ~~~~ ');
+
+
+                if ($res == false) {
+                    throw new \RuntimeException("failed to connect mysql server");
+                }
+                $this->release($mysql);
+            });
         }
     }
 

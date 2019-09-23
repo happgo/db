@@ -37,7 +37,6 @@ class Builder
     {
         $this->model = $model;
         $this->from = $this->model->getTable();
-        var_dump($this->from);
         return $this;
     }
 
@@ -50,19 +49,27 @@ class Builder
     public function select()
     {
 
+
     }
 
-    public function where()
+    public function where($column, $value)
+    {
+
+
+
+
+
+
+
+
+    }
+
+    public function create($value)
     {
 
     }
 
-    public function create()
-    {
-
-    }
-
-    public function update()
+    public function update($value)
     {
 
     }
@@ -85,17 +92,11 @@ class Builder
         return $res;
     }
 
-
-
-    public function sayHello($hello)
+    public function buildSql()
     {
-        var_dump($hello);
 
-    }
 
-    public function test($msg)
-    {
-        var_dump('static ... ' . $msg);
+
 
     }
 
